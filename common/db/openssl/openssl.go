@@ -146,6 +146,8 @@ func setupCtx(opts options.ToolOptions) (*openssl.Ctx, error) {
 		}
 	}
 
+	ctx.DeduceSettingsFromCertificate()
+
 	// If renegotiation is needed, don't return from recv() or send() until it's successful.
 	// Note: this is for blocking sockets only.
 	ctx.SetMode(openssl.AutoRetry)
