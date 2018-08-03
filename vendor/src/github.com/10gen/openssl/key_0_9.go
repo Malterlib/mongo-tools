@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-// +build openssl_pre_1.0
+// +build openssl_pre_1.0 boringssl
 
 package openssl
 
