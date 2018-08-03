@@ -161,9 +161,11 @@ void X_HMAC_CTX_free(HMAC_CTX *ctx) {
 	HMAC_CTX_free(ctx);
 }
 
+#ifndef OPENSSL_IS_BORINGSSL
 int X_PEM_write_bio_PrivateKey_traditional(BIO *bio, EVP_PKEY *key, const EVP_CIPHER *enc, unsigned char *kstr, int klen, pem_password_cb *cb, void *u) {
 	return PEM_write_bio_PrivateKey_traditional(bio, key, enc, kstr, klen, cb, u);
 }
+#endif
 
 #endif
 
@@ -512,9 +514,11 @@ int X_SSL_CTX_ticket_key_cb(SSL *s, unsigned char key_name[16],
 	return go_ticket_key_cb_thunk(p, s, key_name, iv, cctx, hctx, enc);
 }
 
+#ifndef OPENSSL_IS_BORINGSSL
 int X_BIO_get_flags(BIO *b) {
 	return BIO_get_flags(b);
 }
+#endif
 
 void X_BIO_set_flags(BIO *b, int flags) {
 	return BIO_set_flags(b, flags);
@@ -544,17 +548,29 @@ const EVP_MD *X_EVP_get_digestbyname(const char *name) {
 	return EVP_get_digestbyname(name);
 }
 
+#ifndef OPENSSL_IS_BORINGSSL
 const EVP_MD *X_EVP_md_null() {
 	return EVP_md_null();
 }
+#else
+const EVP_MD *X_EVP_md_null() {
+	return NULL;
+}
+#endif
 
 const EVP_MD *X_EVP_md5() {
 	return EVP_md5();
 }
 
+#ifndef OPENSSL_IS_BORINGSSL
 const EVP_MD *X_EVP_ripemd160() {
 	return EVP_ripemd160();
 }
+#else
+const EVP_MD *X_EVP_ripemd160() {
+	return NULL;
+}
+#endif
 
 const EVP_MD *X_EVP_sha224() {
 	return EVP_sha224();
@@ -676,7 +692,7 @@ const EVP_CIPHER *X_EVP_CIPHER_CTX_cipher(EVP_CIPHER_CTX *ctx) {
 }
 
 #if OPENSSL_VERSION_NUMBER >  0x10000000L
-#ifndef OPENSSL_NO_EC
+#if !defined(OPENSSL_NO_EC) && !defined(OPENSSL_IS_BORINGSSL)
 int X_EVP_PKEY_CTX_set_ec_paramgen_curve_nid(EVP_PKEY_CTX *ctx, int nid) {
 	return EVP_PKEY_CTX_set_ec_paramgen_curve_nid(ctx, nid);
 }
