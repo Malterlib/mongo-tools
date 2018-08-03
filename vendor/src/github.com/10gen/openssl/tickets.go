@@ -163,7 +163,7 @@ func go_ticket_key_cb_thunk(p unsafe.Pointer, s *C.SSL, key_name *C.uchar,
 		C.HMAC_Init_ex(
 			hctx,
 			unsafe.Pointer(&key.HMACKey[0]),
-			C.int(len(key.HMACKey)),
+			C.size_t(len(key.HMACKey)),
 			store.DigestCtx.Digest.ptr,
 			store.digestEngine())
 
@@ -193,7 +193,7 @@ func go_ticket_key_cb_thunk(p unsafe.Pointer, s *C.SSL, key_name *C.uchar,
 		C.HMAC_Init_ex(
 			hctx,
 			unsafe.Pointer(&key.HMACKey[0]),
-			C.int(len(key.HMACKey)),
+			C.size_t(len(key.HMACKey)),
 			store.DigestCtx.Digest.ptr,
 			store.digestEngine())
 

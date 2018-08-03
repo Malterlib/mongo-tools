@@ -705,7 +705,7 @@ func (c *Ctx) SetSessionId(session_id []byte) error {
 		ptr = (*C.uchar)(unsafe.Pointer(&session_id[0]))
 	}
 	if int(C.SSL_CTX_set_session_id_context(c.ctx, ptr,
-		C.uint(len(session_id)))) == 0 {
+		C.size_t(len(session_id)))) == 0 {
 		return errorFromErrorQueue()
 	}
 	return nil
