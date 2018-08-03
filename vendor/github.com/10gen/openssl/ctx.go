@@ -725,6 +725,16 @@ func (c *Ctx) SetCipherList(list string) error {
 	return nil
 }
 
+func (c *Ctx) DeduceSettingsFromCertificate() error {
+	runtime.LockOSThread()
+	defer runtime.UnlockOSThread()
+	if int(C.X_SSL_CTX_deduce_settings_from_certificate(c.ctx)) == 0 {
+		return errorFromErrorQueue()
+	}
+	return nil
+}
+
+
 type SessionCacheModes int
 
 const (
