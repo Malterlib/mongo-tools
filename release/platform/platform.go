@@ -578,6 +578,15 @@ var platforms = []Platform{
 	},
 	{
 		Name:                  "ubuntu1804",
+		Arch:                  ArchAarch64,
+		OS:                    OSLinux,
+		Pkg:                   PkgDeb,
+		Repos:                 []Repo{RepoEnterprise, RepoOrg},
+		BuildTags:             defaultBuildTags,
+		MaxLinuxServerVersion: &version.Version{Major: 7, Minor: 0, Patch: 0},
+	},
+	{
+		Name:                  "ubuntu1804",
 		Arch:                  ArchX86_64,
 		OS:                    OSLinux,
 		Pkg:                   PkgDeb,
@@ -595,6 +604,14 @@ var platforms = []Platform{
 	},
 	{
 		Name:      "ubuntu2004",
+		Arch:      ArchAarch64,
+		OS:        OSLinux,
+		Pkg:       PkgDeb,
+		Repos:     []Repo{RepoEnterprise, RepoOrg},
+		BuildTags: defaultBuildTags,
+	},
+	{
+		Name:      "ubuntu2004",
 		Arch:      ArchX86_64,
 		OS:        OSLinux,
 		Pkg:       PkgDeb,
@@ -611,6 +628,14 @@ var platforms = []Platform{
 	},
 	{
 		Name:      "ubuntu2204",
+		Arch:      ArchAarch64,
+		OS:        OSLinux,
+		Pkg:       PkgDeb,
+		Repos:     []Repo{RepoEnterprise, RepoOrg},
+		BuildTags: defaultBuildTags,
+	},
+	{
+		Name:      "ubuntu2204",
 		Arch:      ArchX86_64,
 		OS:        OSLinux,
 		Pkg:       PkgDeb,
@@ -620,6 +645,15 @@ var platforms = []Platform{
 	{
 		Name:                  "ubuntu2404",
 		Arch:                  ArchArm64,
+		OS:                    OSLinux,
+		Pkg:                   PkgDeb,
+		Repos:                 []Repo{RepoEnterprise, RepoOrg},
+		BuildTags:             defaultBuildTags,
+		MinLinuxServerVersion: &version.Version{Major: 8, Minor: 0, Patch: 0},
+	},
+	{
+		Name:                  "ubuntu2404",
+		Arch:                  ArchAarch64,
 		OS:                    OSLinux,
 		Pkg:                   PkgDeb,
 		Repos:                 []Repo{RepoEnterprise, RepoOrg},
