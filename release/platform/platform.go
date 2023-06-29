@@ -550,6 +550,14 @@ var platforms = []Platform{
 	},
 	{
 		Name:      "ubuntu1804",
+		Arch:      ArchAarch64,
+		OS:        OSLinux,
+		Pkg:       PkgDeb,
+		Repos:     []Repo{RepoEnterprise, RepoOrg},
+		BuildTags: []string{"failpoints", "ssl"},
+	},
+	{
+		Name:      "ubuntu1804",
 		Arch:      ArchX86_64,
 		OS:        OSLinux,
 		Pkg:       PkgDeb,
